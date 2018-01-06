@@ -13,6 +13,8 @@ set(PROJECT_SOURCES
   cmake/assign_source_group.cmake
   cmake/import_library.cmake
   
+  include/ra/aspects/hierarchical.hpp
+  include/ra/aspects/named.hpp
   include/ra/resources/animation_clip.hpp
   include/ra/resources/animation_curve.hpp
   include/ra/resources/font.hpp
@@ -25,6 +27,7 @@ set(PROJECT_SOURCES
   include/ra/resources/transform.hpp
   include/ra/resources/video_clip.hpp
   include/ra/loader.hpp
+  include/ra/registry.hpp
   include/ra/resource.hpp
 )
 include(assign_source_group)
