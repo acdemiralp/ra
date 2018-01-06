@@ -58,7 +58,7 @@ if(BUILD_TESTS)
   enable_testing()
 
   set(PROJECT_TEST_SOURCES
-  
+    tests/loader_test.cpp
   )
 
   foreach(_SOURCE ${PROJECT_TEST_SOURCES})
