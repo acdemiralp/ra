@@ -26,15 +26,26 @@ set(PROJECT_SOURCES
   include/ra/resources/nurbs.hpp
   include/ra/resources/transform.hpp
   include/ra/resources/video_clip.hpp
-  include/ra/loader.hpp
+  include/ra/load.hpp
   include/ra/registry.hpp
-  include/ra/resource.hpp
 )
 include(assign_source_group)
 assign_source_group(${PROJECT_SOURCES})
 
 ##################################################  Dependencies  ##################################################
 include(import_library)
+
+# find_package  (Boost REQUIRED)
+# import_library(Boost_INCLUDE_DIRS)
+# 
+# find_package  (foonathan_memory REQUIRED)
+# import_library(foonathan_memory_INCLUDE_DIRS foonathan_memory_LIBRARY_DEBUG foonathan_memory_LIBRARY_RELEASE)
+# 
+# find_package  (FREEIMAGE REQUIRED)
+# import_library(FREEIMAGE_INCLUDE_DIRS FREEIMAGE_LIBRARIES)
+# 
+# find_package  (nlohmann_json REQUIRED)
+# import_library(nlohmann_json_INCLUDE_DIRS)
 
 ##################################################    Targets     ##################################################
 add_library(${PROJECT_NAME} INTERFACE)
@@ -58,7 +69,7 @@ if(BUILD_TESTS)
   enable_testing()
 
   set(PROJECT_TEST_SOURCES
-    tests/loader_test.cpp
+    tests/load_test.cpp
   )
 
   foreach(_SOURCE ${PROJECT_TEST_SOURCES})
