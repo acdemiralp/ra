@@ -35,12 +35,12 @@ assign_source_group(${PROJECT_SOURCES})
 ##################################################  Dependencies  ##################################################
 include(import_library)
 
-# find_package  (Boost REQUIRED)
-# import_library(Boost_INCLUDE_DIRS)
-# 
-# find_package  (foonathan_memory REQUIRED)
-# import_library(foonathan_memory_INCLUDE_DIRS foonathan_memory_LIBRARY_DEBUG foonathan_memory_LIBRARY_RELEASE)
-# 
+find_package  (Boost REQUIRED)
+import_library(Boost_INCLUDE_DIRS)
+
+find_package  (foonathan_memory 0.6 REQUIRED)
+list          (APPEND PROJECT_LIBRARIES foonathan_memory)
+
 # find_package  (FREEIMAGE REQUIRED)
 # import_library(FREEIMAGE_INCLUDE_DIRS FREEIMAGE_LIBRARIES)
 # 

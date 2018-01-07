@@ -1,62 +1,48 @@
 #ifndef RA_REGISTRY_HPP_
 #define RA_REGISTRY_HPP_
 
+#include <cstddef>
 #include <tuple>
 #include <type_traits>
-#include <vector>
+
+#include <ra/container.hpp>
 
 namespace ra
 {
 template<typename... types>
-class registry final
+class registry
 {
 public:
   template<typename type>
-  const std::vector<type>& access()
+  const container<type>& access()
   {
-    return matching_vector<0, type, std::tuple<std::vector<types>...>, vector_of_type<0, type>::value>::get(vectors_);
-  }
-  void                     resize(std::size_t size)
-  {
-    for_each(vectors_, [size] (auto& vector)
-    {
-      vector.resize(size);
-    });
+    return find_container<0, type, std::tuple<container<types>...>, is_same<0, type>::value>::get(containers_);
   }
 
-private:
+protected:
   template<std::size_t index, typename type>
-  struct vector_of_type : std::is_same<type, typename std::tuple_element<index, std::tuple<std::vector<types>...>>::type::value_type>
+  struct is_same : std::is_same<type, typename std::tuple_element<index, std::tuple<container<types>...>>::type::value_type>
   {
     
   };
   template<std::size_t index, typename type, typename tuple, bool match = false>
-  struct matching_vector
+  struct find_container
   {
-    static std::vector<type>& get(tuple& value)
+    static container<type>& get(tuple& value)
     {
-      return matching_vector<index + 1, type, tuple, vector_of_type<index + 1, type>::value>::get(value);
+      return find_container<index + 1, type, tuple, is_same<index + 1, type>::value>::get(value);
     }
   };
   template<std::size_t index, typename type, typename tuple>
-  struct matching_vector<index, type, tuple, true>
+  struct find_container<index, type, tuple, true>
   {
-    static std::vector<type>& get(tuple& value)
+    static container<type>& get(tuple& value)
     {
       return std::get<index>(value);
     }
   };
   
-  template<std::size_t index = 0, typename function_type, typename... tuple_types>
-  typename std::enable_if<index == sizeof...(tuple_types), void>::type for_each(std::tuple<tuple_types...>&      , function_type) { }
-  template<std::size_t index = 0, typename function_type, typename... tuple_types>
-  typename std::enable_if<index <  sizeof...(tuple_types), void>::type for_each(std::tuple<tuple_types...>& tuple, function_type function)
-  {
-    function(std::get<index>(tuple));
-    for_each<index + 1, function_type, tuple_types...>(tuple, function);
-  }
-
-  std::tuple<std::vector<types>...> vectors_;
+  std::tuple<container<types>...> containers_;
 };
 }
 
