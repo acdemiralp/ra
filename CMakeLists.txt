@@ -29,6 +29,7 @@ set(PROJECT_SOURCES
   include/ra/container.hpp
   include/ra/load.hpp
   include/ra/registry.hpp
+  include/ra/save.hpp
 )
 include(assign_source_group)
 assign_source_group(${PROJECT_SOURCES})
