@@ -26,6 +26,7 @@ set(PROJECT_SOURCES
   include/ra/resources/nurbs.hpp
   include/ra/resources/transform.hpp
   include/ra/resources/video_clip.hpp
+  include/ra/container.hpp
   include/ra/load.hpp
   include/ra/registry.hpp
 )
