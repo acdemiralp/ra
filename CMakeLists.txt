@@ -29,6 +29,7 @@ set(PROJECT_SOURCES
   include/ra/container.hpp
   include/ra/load.hpp
   include/ra/registry.hpp
+  include/ra/resource.hpp
   include/ra/save.hpp
 )
 include(assign_source_group)
@@ -71,7 +72,11 @@ if(BUILD_TESTS)
   enable_testing()
 
   set(PROJECT_TEST_SOURCES
+    tests/container_test.cpp
     tests/load_test.cpp
+    tests/registry_test.cpp
+    tests/resource_test.cpp
+    tests/save_test.cpp
   )
 
   foreach(_SOURCE ${PROJECT_TEST_SOURCES})

@@ -14,9 +14,9 @@ class registry
 {
 public:
   template<typename type>
-  const container<type>& access()
+  const container<type>& get()
   {
-    return find_container<0, type, std::tuple<container<types>...>, is_same<0, type>::value>::get(containers_);
+    return find<0, type, std::tuple<container<types>...>, is_same<0, type>::value>::get(containers_);
   }
 
 protected:
@@ -26,15 +26,15 @@ protected:
     
   };
   template<std::size_t index, typename type, typename tuple, bool match = false>
-  struct find_container
+  struct find
   {
     static container<type>& get(tuple& value)
     {
-      return find_container<index + 1, type, tuple, is_same<index + 1, type>::value>::get(value);
+      return find<index + 1, type, tuple, is_same<index + 1, type>::value>::get(value);
     }
   };
   template<std::size_t index, typename type, typename tuple>
-  struct find_container<index, type, tuple, true>
+  struct find<index, type, tuple, true>
   {
     static container<type>& get(tuple& value)
     {

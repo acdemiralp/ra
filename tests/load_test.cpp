@@ -23,7 +23,7 @@ void ra::load(const text_resource::description& description, text_resource* reso
   resource->text = std::string(std::istreambuf_iterator<char>(stream), std::istreambuf_iterator<char>());
 }
 
-TEST_CASE("Resource loader is tested.", "[loader]") 
+TEST_CASE("Resource loading is tested.", "[load]") 
 {
   std::ofstream output_stream("test.txt");
   output_stream << "test contents";

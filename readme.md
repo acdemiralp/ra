@@ -21,7 +21,7 @@ What is a resource registry?
 - A compile-time specified tuple where each element is a resource container: 
   `registry<audio_clip, font, image, model, nurbs, video_clip> resource_registry;`
 - Provides access to the resource containers by type: 
-  `auto& fonts = resource_registry.access<font>();`
+  `auto& fonts = resource_registry.get<font>();`
 
 What is a central resource registry?
 - A singleton resource registry.
