@@ -20,12 +20,12 @@ public:
   template<typename description_type>
   void load  (const description_type& description)
   {
-    ra::load<description_type, derived>(description, static_cast<      derived*>(this));
+    ra::load(description, static_cast<      derived*>(this));
   }
   template<typename description_type>
   void save  (const description_type& description) const
   {
-    ra::save<description_type, derived>(description, static_cast<const derived*>(this));
+    ra::save(description, static_cast<const derived*>(this));
   }
 
 protected:

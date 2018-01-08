@@ -17,7 +17,7 @@ public:
 };
 
 template <>
-void ra::load(const text_resource::description& description, text_resource* resource)
+void ra::load(const text_resource::description& description,       text_resource* resource)
 {
   std::ifstream stream(description.filename);
   resource->text = std::string(std::istreambuf_iterator<char>(stream), std::istreambuf_iterator<char>());
