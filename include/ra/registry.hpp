@@ -13,6 +13,8 @@ template<typename... types>
 class registry
 {
 public:
+  virtual ~registry() = default;
+
   template<typename type>
   const container<type>& get()
   {
