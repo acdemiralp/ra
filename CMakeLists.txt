@@ -13,11 +13,13 @@ set(PROJECT_SOURCES
   cmake/assign_source_group.cmake
   cmake/import_library.cmake
   
+  include/ra/central_registry.hpp
   include/ra/container.hpp
   include/ra/load.hpp
   include/ra/registry.hpp
   include/ra/resource.hpp
   include/ra/save.hpp
+  include/ra/singleton.hpp
 )
 include(assign_source_group)
 assign_source_group(${PROJECT_SOURCES})
@@ -50,6 +52,7 @@ if(BUILD_TESTS)
   enable_testing()
 
   set(PROJECT_TEST_SOURCES
+    tests/central_registry_test.cpp
     tests/container_test.cpp
     tests/load_test.cpp
     tests/registry_test.cpp
