@@ -13,19 +13,6 @@ set(PROJECT_SOURCES
   cmake/assign_source_group.cmake
   cmake/import_library.cmake
   
-  include/ra/aspects/hierarchical.hpp
-  include/ra/aspects/named.hpp
-  include/ra/resources/animation_clip.hpp
-  include/ra/resources/animation_curve.hpp
-  include/ra/resources/font.hpp
-  include/ra/resources/image.hpp
-  include/ra/resources/keyframe.hpp
-  include/ra/resources/material.hpp
-  include/ra/resources/mesh.hpp
-  include/ra/resources/model.hpp
-  include/ra/resources/nurbs.hpp
-  include/ra/resources/transform.hpp
-  include/ra/resources/video_clip.hpp
   include/ra/container.hpp
   include/ra/load.hpp
   include/ra/registry.hpp
