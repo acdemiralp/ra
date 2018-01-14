@@ -16,11 +16,16 @@ public:
   virtual ~registry() = default;
 
   template<typename type>
-  const container<type>& get()
+  const container<type>& get() const
   {
     return find<0, type, std::tuple<container<types>...>, is_same<0, type>::value>::get(containers_);
   }
-
+  template<typename type>
+  container<type>&       get()
+  {
+    return find<0, type, std::tuple<container<types>...>, is_same<0, type>::value>::get(containers_);
+  }
+  
 protected:
   template<std::size_t index, typename type>
   struct is_same : std::is_same<type, typename std::tuple_element<index, std::tuple<container<types>...>>::type::value_type>
