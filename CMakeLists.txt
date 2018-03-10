@@ -13,23 +13,22 @@ set(PROJECT_SOURCES
   cmake/assign_source_group.cmake
   cmake/import_library.cmake
   
-  include/ra/animation_clip.hpp
-  include/ra/animation_curve.hpp
-  include/ra/font.hpp
-  include/ra/image.hpp
-  include/ra/keyframe.hpp
-  include/ra/material.hpp
-  include/ra/mesh.hpp
-  include/ra/model.hpp
-  include/ra/nurbs.hpp
-  include/ra/transform.hpp
-  include/ra/video_clip.hpp
+  include/ra/central_registry.hpp
+  include/ra/container.hpp
+  include/ra/load.hpp
+  include/ra/registry.hpp
+  include/ra/resource.hpp
+  include/ra/save.hpp
+  include/ra/singleton.hpp
 )
 include(assign_source_group)
 assign_source_group(${PROJECT_SOURCES})
 
 ##################################################  Dependencies  ##################################################
 include(import_library)
+
+find_package(foonathan_memory 0.6 REQUIRED)
+list        (APPEND PROJECT_LIBRARIES foonathan_memory)
 
 ##################################################    Targets     ##################################################
 add_library(${PROJECT_NAME} INTERFACE)
@@ -53,7 +52,12 @@ if(BUILD_TESTS)
   enable_testing()
 
   set(PROJECT_TEST_SOURCES
-  
+    tests/central_registry_test.cpp
+    tests/container_test.cpp
+    tests/load_test.cpp
+    tests/registry_test.cpp
+    tests/resource_test.cpp
+    tests/save_test.cpp
   )
 
   foreach(_SOURCE ${PROJECT_TEST_SOURCES})
